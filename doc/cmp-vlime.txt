@@ -1,0 +1,68 @@
+*cmp-vlime.txt*	Completion source for Common Lisp using Vlime and nvim-cmp
+
+                                                                   *cmp-vlime*
+               ____ __  __ ____    __     ___ ~
+              / ___|  \/  |  _ \   \ \   / / (_)_ __ ___   __~
+             | |   | |\/| | |_) |___\ \ / /| | | '_ ` _ \ / _ \~
+             | |___| |  | |  __/_____\ V / | | | | | | | |  __/~
+              \____|_|  |_|_|         \_/  |_|_|_| |_| |_|\___|~
+
+Version 0.0.0
+Author: Alejandro "HiPhish" Sanchez
+License: MIT License
+
+
+
+==============================================================================
+TABLE OF CONTENTS                                         *cmp-vlime-contents*
+
+
+    1. Introduction ...................................... |cmp-vlime-intro|
+    2. Setup ............................................. |cmp-vlime-setup|
+    3. See also .......................................... |cmp-vlime-seealso|
+
+
+==============================================================================
+INTRODUCTION                                                 *cmp-vlime-intro*
+
+This is a completion source for nvim-cmp which uses the Vlime plugin to get
+completion candidates from a running Common Lisp image.
+
+
+==============================================================================
+SETUP AND FIRST STEPS                                        *cmp-vlime-setup*
+
+This manual assumes that you have nvim-cmp already configured. The source is
+automatically registered under the name `vlime`. You have to add it to your
+cmp configuration, for example like this:
+>
+    require('cmp').setup.filetype({'lisp'}, {
+        sources = {
+            {name = 'vlime'}
+        }
+    })
+<
+See |cmp-config.sources| for more details.
+
+The source will only run if there is an active Vlime connection, so you must
+connect to a Swank server first.
+
+
+==============================================================================
+SEE ALSO                                                   *cmp-vlime-seealso*
+
+Official nvim-cmp repository:
+    https://github.com/hrsh7th/nvim-cmp/
+
+Official Vlime repository:
+    https://github.com/vlime/vlime
+
+nvim-cmp manual:
+    |nvim-cmp|
+
+Vlime manual:
+    |vlime.txt|
+
+
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
