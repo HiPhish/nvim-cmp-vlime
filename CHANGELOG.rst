@@ -11,6 +11,15 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 `Semantic Versioning`_.
 
 
+Unreleased
+##########
+
+Fixed
+=====
+
+- Removed dummy information from completion items
+
+
 [0.3.0] - 2022-11-22
 ####################
 

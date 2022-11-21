@@ -53,8 +53,8 @@ local function fuzzy2lsp(item)
 			detail = flags,
 		},
 		kind = flags_to_kind(flags) or lsp_types.CompletionItemKind.Keyword,
-		detail = '???',
-		documentation = 'asdfwerwr'  -- Get docstring from Vlime
+		-- detail = 'some detail',  -- Perhaps the symbol package?
+		-- documentation = 'docstring here',  -- Get docstring from Vlime
 		-- sortText = ???  Maybe strip earmuffs to ignore in sorting?
 		-- textEdit = ???  Maybe downcase the label?
 	}
