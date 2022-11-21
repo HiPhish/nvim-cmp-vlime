@@ -38,7 +38,8 @@ cmp configuration, for example like this:
 >
     require('cmp').setup.filetype({'lisp'}, {
         sources = {
-            {name = 'vlime'}
+            -- Non-fuzzy (simple) completion is the default
+            {name = 'vlime', option = {fuzzy = false}
         }
     })
 <
@@ -46,6 +47,11 @@ See |cmp-config.sources| for more details.
 
 The source will only run if there is an active Vlime connection, so you must
 connect to a Swank server first.
+
+Vlime offers both "simple" and "fuzzy" completion. Fuzzy completion provides
+better results, but it requires a Swank contrib. See |vlime-completions| for
+more information. Generally it should be safe to set `fuzzy` to `true`, but I
+prefer err on the side of cautions in the default settings.
 
 
 ==============================================================================

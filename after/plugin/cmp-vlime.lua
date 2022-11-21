@@ -3,8 +3,8 @@ local fn = vim.fn
 require 'cmp.types.cmp'
 
 
--- Converts one fuzzy Vlime completin item to one LSP completion item.
-local function fuzzyvlime2lsp(item)
+-- Converts one fuzzy Vlime completion item to one LSP completion item.
+local function fuzzy2lsp(item)
 	return {
 		label = item[1],
 		labelDetails = {
@@ -18,8 +18,8 @@ local function fuzzyvlime2lsp(item)
 	}
 end
 
--- Converts one simple Vlime completin item to one LSP completion item. See
-local function simplevlime2lsp(item)
+-- Converts one simple Vlime completion item to one LSP completion item.
+local function simple2lsp(item)
 	return {
 		label = item,
 		-- kind = ???  Get the kind from Vlime maybe
@@ -28,12 +28,6 @@ local function simplevlime2lsp(item)
 		-- sortText = ???  Maybe strip earmuffs to ignore in sorting?
 		-- textEdit = ???  Maybe downcase the label?
 	}
-end
-
----Adapter function which transforms fuzzy completion candidates from Vlime
----into a form suitable for cmp.
-local function process_fuzzy_completions(items)
-	return vim.tbl_map(fuzzyvlime2lsp, items)
 end
 
 
@@ -57,12 +51,16 @@ end
 ---Invoke completion (required).
 ---@param callback function
 function source:complete(params, callback)
-	local on_done = function(candiates)
-		callback(process_fuzzy_completions(candiates))
+	local fuzzy = params.option.fuzzy or false
+
+	local on_done = function(candidates)
+		local mapper = fuzzy and fuzzy2lsp or simple2lsp
+		callback(vim.tbl_map(mapper, candidates))
 	end
 
 	local input = string.sub(params.context.cursor_before_line, params.offset)
-	fn['cmp_vlime#get_completion'](input, on_done)
+	local getter = fuzzy and 'cmp_vlime#get_fuzzy_completion' or 'cmp_vlime#get_simple_completion'
+	fn[getter](input, on_done)
 end
 
 
