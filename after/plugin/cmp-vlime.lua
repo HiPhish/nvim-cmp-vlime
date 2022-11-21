@@ -1,18 +1,60 @@
 local cmp = require 'cmp'
+local lsp_types = require 'cmp.types.lsp'
 local fn = vim.fn
 require 'cmp.types.cmp'
+
+---Maps a Swank flag character to an LSP CompletionItemKind
+local flag_to_kind = {
+	b = lsp_types.CompletionItemKind.Variable,
+	f = lsp_types.CompletionItemKind.Function,
+	g = lsp_types.CompletionItemKind.Method,
+	c = lsp_types.CompletionItemKind.Class,
+	t = lsp_types.CompletionItemKind.Class,
+	m = lsp_types.CompletionItemKind.Operator,
+	s = lsp_types.CompletionItemKind.Operator,
+	p = lsp_types.CompletionItemKind.Module,
+}
+
+---Precedence of LSP kinds for display in descending order
+local kind_precedence = {
+	lsp_types.CompletionItemKind.Module,
+	lsp_types.CompletionItemKind.Class,
+	lsp_types.CompletionItemKind.Operator,
+	lsp_types.CompletionItemKind.Method,
+	lsp_types.CompletionItemKind.Function,
+	lsp_types.CompletionItemKind.Variable,
+}
+
+---Converts a flags string to one LSP kind object
+---@param flags string  The flags string as provided by Vlime
+---@return number? kind  The LSP kind or nil if no flags
+local function flags_to_kind(flags)
+	local kinds = {}  -- This is used as a set
+	for i = 1, #flags do
+		local kind = flag_to_kind[flags:sub(i, i)]
+		if kind then kinds[kind] = true end
+	end
+	-- A symbol may have many flags, which map onto different kinds. The kind
+	-- precedence tells us which of the kinds to display; we pick the highest
+	-- kind we can find.
+	for _, kind in ipairs(kind_precedence) do
+		if kinds[kind] then return kind end
+	end
+end
 
 
 -- Converts one fuzzy Vlime completion item to one LSP completion item.
 local function fuzzy2lsp(item)
+	local symbol = item[1]
+	local flags  = item[4]
 	return {
-		label = item[1],
+		label = symbol,
 		labelDetails = {
-			detail = item[4],
+			detail = flags,
 		},
-		-- kind = ???  Get the kind from the last item field
-		-- detail = ???
-		-- documentation = '???' Get docstring from Vlime
+		kind = flags_to_kind(flags) or lsp_types.CompletionItemKind.Keyword,
+		detail = '???',
+		documentation = 'asdfwerwr'  -- Get docstring from Vlime
 		-- sortText = ???  Maybe strip earmuffs to ignore in sorting?
 		-- textEdit = ???  Maybe downcase the label?
 	}

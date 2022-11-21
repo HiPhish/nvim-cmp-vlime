@@ -11,6 +11,15 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 `Semantic Versioning`_.
 
 
+Unreleased
+##########
+
+Added
+=====
+
+- More precise display of completion item kind in fuzzy completion
+
+
 [0.2.0] - 2022-11-21
 ####################
 
