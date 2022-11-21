@@ -11,8 +11,8 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 `Semantic Versioning`_.
 
 
-Unreleased
-##########
+[0.3.1] - 2022-11-22
+####################
 
 Fixed
 =====

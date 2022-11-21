@@ -7,7 +7,7 @@
              | |___| |  | |  __/_____\ V / | | | | | | | |  __/~
               \____|_|  |_|_|         \_/  |_|_|_| |_| |_|\___|~
 
-Version 0.3.0
+Version 0.3.1
 Author: Alejandro "HiPhish" Sanchez
 License: MIT License
 
