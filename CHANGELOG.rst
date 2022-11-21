@@ -11,6 +11,19 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 `Semantic Versioning`_.
 
 
+Unreleased
+##########
+
+This release adds support for simple completions in addition to fuzzy
+completions.
+
+Added
+=====
+
+- Support for simple completions
+- Source option `fuzzy`
+
+
 [0.1.0] - 2022-11-21
 ####################
 
