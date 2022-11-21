@@ -55,7 +55,7 @@ function source:complete(params, callback)
 
 	local on_done = function(candidates)
 		local mapper = fuzzy and fuzzy2lsp or simple2lsp
-		callback(vim.tbl_map(mapper, candidates))
+		callback(vim.tbl_map(mapper, candidates or {}))
 	end
 
 	local input = string.sub(params.context.cursor_before_line, params.offset)
