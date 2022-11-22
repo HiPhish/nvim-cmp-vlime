@@ -16,3 +16,5 @@ function! cmp_vlime#get_documentation(symbol, callback)
 	silent let l:connection = vlime#connection#Get(v:true)
 	call l:connection.DocumentationSymbol(a:symbol, {c, r -> luaeval('_A[1](_A[2])', [a:callback, r])})
 endfunction
+
+" vim:tw=79:ts=4:sw=4:noet:
