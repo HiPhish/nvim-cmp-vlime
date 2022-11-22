@@ -1,0 +1,70 @@
+*cmp-vlime-changelog.txt*	Changelog for |cmp-vlime|
+
+
+                                                         *cmp-vlime-changelog*
+All notable changes to this project will be documented in this file.  The
+format is based on Keep a Changelog and this project adheres to Semantic
+Versioning.
+
+Keep a Changelog:
+  https://keepachangelog.com/en/1.0.0/
+
+Semantic Versioning:
+  https://semver.org/spec/v2.0.0.html
+
+
+
+==============================================================================
+Unreleased
+
+Added~
+
+  - Documentation for completion items based on docstring
+  - Changelog included in manual (|cmp-vlime-changelog|)
+
+
+
+==============================================================================
+Version 0.3.1                                                *cmp-vlime-0.3.1*
+Released 2022-11-22
+
+Fixed~
+
+  - Removed dummy information from completion items
+
+
+
+==============================================================================
+Version 0.3.0                                                *cmp-vlime-0.3.0*
+Released 2022-11-22
+
+Added~
+
+  - More precise display of completion item kind in fuzzy completion
+
+
+
+==============================================================================
+Version 0.2.0                                                *cmp-vlime-0.2.0*
+Released 2022-11-21
+
+This release adds support for simple completions in addition to fuzzy
+completions.
+
+Added~
+
+  - Support for simple completions
+  - Source option `fuzzy`
+
+
+
+==============================================================================
+Version 0.1.0                                                *cmp-vlime-0.1.0*
+Released 2022-11-21
+
+Initial release
+
+
+
+==============================================================================
+ vim:tw=78:ts=8:sw=2:ft=help:norl:et:
