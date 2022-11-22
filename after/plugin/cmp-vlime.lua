@@ -42,36 +42,48 @@ local function flags_to_kind(flags)
 	end
 end
 
+---Set the documentation of an LSP completion item to the docstring of the
+---symbol.
+---@param item table  The LSP completion item to mutate
+---@return nil
+local function set_documentation(item)
+	local symbol = item.label
+	local callback = function(docstring)
+		item.documentation = docstring
+	end
+	fn['cmp_vlime#get_documentation'](symbol, callback)
+end
 
 -- Converts one fuzzy Vlime completion item to one LSP completion item.
 local function fuzzy2lsp(item)
 	local symbol = item[1]
 	local flags  = item[4]
-	return {
+	local result = {
 		label = symbol,
 		labelDetails = {
 			detail = flags,
 		},
 		kind = flags_to_kind(flags) or lsp_types.CompletionItemKind.Keyword,
 		-- detail = 'some detail',  -- Perhaps the symbol package?
-		-- documentation = 'docstring here',  -- Get docstring from Vlime
 		-- sortText = ???  Maybe strip earmuffs to ignore in sorting?
 		-- textEdit = ???  Maybe downcase the label?
 	}
+	set_documentation(result)
+	return result
 end
 
 -- Converts one simple Vlime completion item to one LSP completion item.
 local function simple2lsp(item)
-	return {
+	local result = {
 		label = item,
 		-- kind = ???  Get the kind from Vlime maybe
 		-- detail = ???
-		-- documentation = '???' Get docstring from Vlime
 		-- sortText = ???  Maybe strip earmuffs to ignore in sorting?
 		-- textEdit = ???  Maybe downcase the label?
 	}
+	set_documentation(result)
+	return result
 end
-
 
 -------------------------------------------------------------------------------
 local source = {}

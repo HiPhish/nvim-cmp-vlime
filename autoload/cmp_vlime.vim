@@ -11,3 +11,8 @@ function cmp_vlime#get_simple_completion(base, callback)
 	silent let l:connection = vlime#connection#Get(v:true)
 	call l:connection.SimpleCompletions(a:base, {c, r -> luaeval('_A[1](_A[2])', [a:callback, r[0]])})
 endfunction
+
+function! cmp_vlime#get_documentation(symbol, callback)
+	silent let l:connection = vlime#connection#Get(v:true)
+	call l:connection.DocumentationSymbol(a:symbol, {c, r -> luaeval('_A[1](_A[2])', [a:callback, r])})
+endfunction

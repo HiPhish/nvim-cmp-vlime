@@ -11,6 +11,15 @@ The format is based on `Keep a Changelog`_ and this project adheres to
 `Semantic Versioning`_.
 
 
+Unreleased
+##########
+
+Added
+=====
+
+- Documentation for completion items based on docstring
+
+
 [0.3.1] - 2022-11-22
 ####################
 
