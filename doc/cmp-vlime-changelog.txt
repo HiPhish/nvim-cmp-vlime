@@ -22,6 +22,10 @@ Added~
   - Documentation for completion items based on docstring
   - Changelog included in manual (|cmp-vlime-changelog|)
 
+Fixed~
+
+  - Place two spaces between sentences in documentation
+
 
 
 ==============================================================================

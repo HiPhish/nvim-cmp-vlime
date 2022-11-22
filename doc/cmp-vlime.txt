@@ -30,10 +30,10 @@ completion candidates from a running Common Lisp image.
 
 
 ==============================================================================
-SETUP AND FIRST STEPS                                        *cmp-vlime-setup*
+SETUP                                                        *cmp-vlime-setup*
 
-This manual assumes that you have nvim-cmp already configured. The source is
-automatically registered under the name `vlime`. You have to add it to your
+This manual assumes that you have nvim-cmp already configured.  The source is
+automatically registered under the name `vlime`.  You have to add it to your
 cmp configuration, for example like this:
 >
     require('cmp').setup.filetype({'lisp'}, {
@@ -48,9 +48,9 @@ See |cmp-config.sources| for more details.
 The source will only run if there is an active Vlime connection, so you must
 connect to a Swank server first.
 
-Vlime offers both "simple" and "fuzzy" completion. Fuzzy completion provides
-better results, but it requires a Swank contrib. See |vlime-completions| for
-more information. Generally it should be safe to set `fuzzy` to `true`, but I
+Vlime offers both "simple" and "fuzzy" completion.  Fuzzy completion provides
+better results, but it requires a Swank contrib.  See |vlime-completions| for
+more information.  Generally it should be safe to set `fuzzy` to `true`, but I
 prefer err on the side of cautions in the default settings.
 
 
