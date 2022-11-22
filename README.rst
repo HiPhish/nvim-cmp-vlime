@@ -7,6 +7,12 @@
 Completion source for `nvim-cmp`_ which uses `Vlime`_ for completion
 candidates.
 
+.. image:: https://user-images.githubusercontent.com/4954650/203307409-834e82c3-576d-41d0-ae5b-839b5e6524e1.png
+   :alt: Screenshot of Neovim showing a piece of Common Lisp code being
+         completed; the completions are shown in a floating window and next to
+         the completions there is a floating window showing the documentation
+         for the currently selected item.
+
 
 Installation
 ############
