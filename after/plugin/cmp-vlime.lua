@@ -58,7 +58,7 @@ end
 local function fuzzy2lsp(item)
 	local symbol = item[1]
 	local flags  = item[4]
-	local result = {
+	return {
 		label = symbol,
 		labelDetails = {
 			detail = flags,
@@ -68,21 +68,17 @@ local function fuzzy2lsp(item)
 		-- sortText = ???  Maybe strip earmuffs to ignore in sorting?
 		-- textEdit = ???  Maybe downcase the label?
 	}
-	set_documentation(result)
-	return result
 end
 
 -- Converts one simple Vlime completion item to one LSP completion item.
 local function simple2lsp(item)
-	local result = {
+	return {
 		label = item,
 		-- kind = ???  Get the kind from Vlime maybe
 		-- detail = ???
 		-- sortText = ???  Maybe strip earmuffs to ignore in sorting?
 		-- textEdit = ???  Maybe downcase the label?
 	}
-	set_documentation(result)
-	return result
 end
 
 -------------------------------------------------------------------------------
@@ -117,6 +113,12 @@ function source:complete(params, callback)
 	fn[getter](input, on_done)
 end
 
+---@param item table  The LSP completion item to mutate
+---@param callback function
+function source:resolve(item, callback)
+	set_documentation(item)
+	vim.defer_fn(callback(item), 5)
+end
 
 -------------------------------------------------------------------------------
 cmp.register_source('vlime', source)
