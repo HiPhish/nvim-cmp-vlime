@@ -117,7 +117,7 @@ end
 ---@param callback function
 function source:resolve(item, callback)
 	set_documentation(item)
-	vim.defer_fn(callback(item), 5)
+	vim.defer_fn(function() callback(item) end, 5)
 end
 
 -------------------------------------------------------------------------------
