@@ -86,7 +86,7 @@ local source = {}
 
 ---Source is only available if Vlime is connected
 function source:is_available()
-	local connection = vim.fn['vlime#connection#Get'](true)
+	local connection = fn['vlime#connection#Get'](true)
 	return connection ~= vim.NIL
 end
 
@@ -101,7 +101,9 @@ end
 ---Invoke completion (required).
 ---@param callback function
 function source:complete(params, callback)
-	local fuzzy = params.option.fuzzy or false
+	-- See |g:vlime_contribs|, this assumes the API is stable
+	local contribs = vim.g.vlime_contribs
+	local fuzzy = not (contribs and fn.index(contribs, 'SWANK-FUZZY') < 0)
 
 	local on_done = function(candidates)
 		local mapper = fuzzy and fuzzy2lsp or simple2lsp

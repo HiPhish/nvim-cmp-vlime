@@ -17,6 +17,14 @@ Semantic Versioning:
 ==============================================================================
 Unreleased
 
+Changed~
+
+  - Whether to use fuzzy or simple completions depends on Vlime settings
+
+Removed~
+
+  - The `fuzzy` source option
+
 Fixed~
 
   - No more slowdown in larger projects
