@@ -49,7 +49,18 @@ end
 local function set_documentation(item)
 	local symbol = item.label
 	local callback = function(docstring)
-		item.documentation = docstring
+		-- Strip boilerplate produced by Swank
+		local doc = docstring:gsub('^Documentation for the symbol .-:\n\n', '', 1)
+
+		-- Edge case: abort if there is no useful documentation. These default
+		-- strings are defined by Swank.
+		if doc == 'Not documented.' then
+			return
+		elseif doc:match('^No such symbol, .-%.$') == doc then
+			return
+		end
+
+		item.documentation = doc
 	end
 	fn['cmp_vlime#get_documentation'](symbol, callback)
 end

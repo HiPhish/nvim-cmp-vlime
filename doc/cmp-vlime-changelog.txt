@@ -20,6 +20,9 @@ Unreleased
 Changed~
 
   - Whether to use fuzzy or simple completions depends on Vlime settings
+  - Removed boilerplate text at the top of the documentation
+  - If there is no documentation available for a symbol the boilerplate text
+    will not be shown
 
 Removed~
 
