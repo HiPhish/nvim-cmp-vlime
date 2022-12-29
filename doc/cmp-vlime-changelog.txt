@@ -15,7 +15,8 @@ Semantic Versioning:
 
 
 ==============================================================================
-Unreleased
+Version 0.5.0
+Released 2022-12-29
 
 Changed~
 
